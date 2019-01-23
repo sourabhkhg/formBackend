@@ -54,7 +54,7 @@ app.post("/api/form", (req, res) => {
   User.findOne({ email: user.email })
     .then(user => {
       if (user) {
-        return res.status(302).json({ email: "Email already exists" });
+        return res.status(200).json({ email: "Email already exists" });
       } else {
       }
     })
