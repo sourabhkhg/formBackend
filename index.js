@@ -54,11 +54,13 @@ app.post("/api/form", (req, res) => {
   User.findOne({ email: user.email })
     .then(user => {
       if (user) {
-        return res.status(400).json({ email: "Email already exists" });
+        return res.status(302).json({ email: "Email already exists" });
       } else {
       }
     })
-    .catch(err => res.status(404).send(err));
+    .catch(err => {
+      return res.status(404).send(err);
+    });
 
   //Create New user
   new User(user)
